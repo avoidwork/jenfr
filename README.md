@@ -22,7 +22,7 @@ Promise.all(pics.map(file => {
 
 ### API
 **create(Element[, options, imageUrl])**
-_Promise_
+_Promise ([canvas, context, image])_
 
 Creates a photo component with the supplied options. A fallback `img` Element will be created with `imageUrl` if the Client cannot create a `canvas`.
 
