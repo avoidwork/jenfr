@@ -16,6 +16,8 @@ module.exports = function (grunt) {
 			dist: {
 				src : [
 					"src/intro.js",
+					"src/defaults.js",
+					"src/deferred.js",
 					"src/jenfr.js",
 					"src/outro.js"
 				],
