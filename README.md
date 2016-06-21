@@ -21,10 +21,10 @@ Promise.all(pics.map(file => {
 ```
 
 ### API
-**create(Element[, descriptor])**
+**create(Element[, options, imageUrl])**
 _Promise_
 
-Creates a photo component
+Creates a photo component with the supplied options. A fallback `img` Element will be created with `imageUrl` if the Client cannot create a `canvas`.
 
 ### How can I load jenfr?
 jenfr supports AMD loaders (require.js, curl.js, etc.), node.js & npm (npm install jenfr), or using a script tag.
