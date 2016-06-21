@@ -1,0 +1,12 @@
+/.idea/
+/node_modules/
+/lib/ogden.min.js
+/lib/ogden.min.js.map
+/src/
+/test/
+.eslintrc
+.git
+.gitignore
+.travis.yml
+Gruntfile.js
+bower.json
