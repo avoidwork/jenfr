@@ -1,29 +1,32 @@
 {
-  "name": "ogden",
-  "homepage": "http://avoidwork.github.io/ogden",
+  "name": "jenfr",
+  "homepage": "http://avoidwork.github.io/jenfr",
   "authors": [
     "Jason Mulligan <jason.mulligan@avoidwork.com>"
   ],
-  "description": "Basic English tokenizer",
-  "main": "lib/ogden.js",
+  "description": "Photo library",
+  "main": "lib/jenfr.js",
   "moduleType": [
     "amd",
     "globals",
     "node"
   ],
   "keywords": [
-    "token",
-    "tokenize",
-    "tokenization",
-    "words"
+    "canvas",
+    "photo",
+    "photos",
+    "picture",
+    "pictures",
+    "pic",
+    "pics"
   ],
   "license": "BSD-3-Clause",
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
-    "lib/ogden.es6.js",
-    "lib/ogden.min.*",
+    "lib/jenfr.es6.js",
+    "lib/jenfr.min.*",
     "src",
     "test",
     "tests"
