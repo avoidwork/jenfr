@@ -3,7 +3,6 @@ Photo library
 
 ### Requirements
 - `Promise`
-- `Set`
 
 ### Example
 
