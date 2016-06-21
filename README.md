@@ -12,7 +12,7 @@ const jenfr = require("jenfr"),
   target = document.querySelector("#photos");
 
 Promise.all(pics.map(file => {
-    return jenfr.create(target, {className: "photo"});
+    return jenfr(target, {className: "photo"});
 })).then(() => {
   console.log("Photos loaded");
 }, e => {
@@ -21,7 +21,7 @@ Promise.all(pics.map(file => {
 ```
 
 ### API
-**create(Element[, options, imageUrl])**
+**jenfr(Element[, options, imageUrl])**
 _Promise ([canvas, context, image])_
 
 Creates a photo component with the supplied options. A fallback `img` Element will be created with `imageUrl` if the Client cannot create a `canvas`.
