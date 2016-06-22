@@ -1,5 +1,5 @@
 # jenfr
-Photo library
+Canvas based image loader
 
 ### Requirements
 - `Promise`
@@ -21,10 +21,12 @@ Promise.all(pics.map(file => {
 ```
 
 ### API
-**jenfr(Element[, options, imageUrl])**
+**jenfr(Element[, imageUrl, options])**
 _Promise ([canvas, context, image])_
 
 Creates a photo component with the supplied options. A fallback `img` Element will be created with `imageUrl` if the Client cannot create a `canvas`.
+
+To get the natural `width` & `height` of the image, pass an empty `Object` for `options`.
 
 ### How can I load jenfr?
 jenfr supports AMD loaders (require.js, curl.js, etc.), node.js & npm (npm install jenfr), or using a script tag.

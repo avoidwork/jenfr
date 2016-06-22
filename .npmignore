@@ -1,7 +1,7 @@
 /.idea/
 /node_modules/
-/lib/ogden.min.js
-/lib/ogden.min.js.map
+/lib/jenfr.min.js
+/lib/jenfr.min.js.map
 /src/
 /test/
 .eslintrc

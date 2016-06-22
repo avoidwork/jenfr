@@ -1,7 +1,7 @@
 {
   "name": "jenfr",
   "version": "1.0.0",
-  "description": "Photo library",
+  "description": "Canvas based image loader",
   "main": "lib/jenfr.js",
   "scripts": {
     "test": "grunt test"

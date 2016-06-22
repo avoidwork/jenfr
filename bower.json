@@ -4,7 +4,7 @@
   "authors": [
     "Jason Mulligan <jason.mulligan@avoidwork.com>"
   ],
-  "description": "Photo library",
+  "description": "Canvas based image loader",
   "main": "lib/jenfr.js",
   "moduleType": [
     "amd",

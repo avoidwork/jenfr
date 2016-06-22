@@ -1,4 +1,4 @@
-function jenfr (target, options = defaults, uri = "") {
+function jenfr (target, uri = "", options = {height: 100, width: 100}) {
 	let defer = deferred(),
 		canvas, ctx, frag, img;
 
@@ -10,13 +10,27 @@ function jenfr (target, options = defaults, uri = "") {
 		defer.reject(new TypeError("Object required"));
 	}
 
+	if (uri) {
+		img = document.createElement("img");
+		img.setAttribute("src", uri);
+
+		["height", "width"].forEach(i => {
+			if (isNaN(options[i])) {
+				img.setAttribute(i, img[i]);
+				options[i] = img[i];
+			} else {
+				img.setAttribute(i, options[i]);
+			}
+		});
+	}
+
 	frag = document.createDocumentFragment();
 	canvas = document.createElement("canvas");
 	frag.appendChild(canvas);
 
-	Object.keys(defaults).forEach(i => {
+	Object.keys(options).forEach(i => {
 		if (attribute.test(i)) {
-			canvas.setAttribute(i, defaults[i]);
+			canvas.setAttribute(i, options[i]);
 		}
 	});
 
@@ -27,11 +41,11 @@ function jenfr (target, options = defaults, uri = "") {
 			ctx.fillStyle = options.fillStyle;
 			ctx.fillRect(0, 0, canvas.width, canvas.height);
 		}
-	} else if (uri) {
-		img = document.createElement("img");
-		img.setAttribute("src", uri);
-		img.setAttribute("height", options.height);
-		img.setAttribute("width", options.width);
+
+		if (img) {
+			ctx.drawImage(img, 0, 0, options.width, options.height);
+		}
+	} else if (img) {
 		canvas.appendChild(img);
 	}
 
