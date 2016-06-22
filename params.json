@@ -1,0 +1,6 @@
+{
+  "name": "jenfr",
+  "tagline": "Canvas based image loader",
+  "body": "# jenfr\r\nCanvas based image loader\r\n\r\n### Requirements\r\n- `Promise`\r\n\r\n### Example\r\n\r\n```javascript\r\nconst jenfr = require(\"jenfr\"),\r\n  pics = [\"file1.jpg\", \"file2.jpg\", \"file3.jpg\", \"file4.jpg\", \"file5.jpg\"],\r\n  target = document.querySelector(\"#photos\");\r\n\r\nPromise.all(pics.map(file => {\r\n    return jenfr(target, {className: \"photo\"});\r\n})).then(() => {\r\n  console.log(\"Photos loaded\");\r\n}, e => {\r\n  console.error(e);\r\n});\r\n```\r\n\r\n### API\r\n**jenfr(Element[, imageUrl, options])**\r\n_Promise ([canvas, context, image])_\r\n\r\nCreates a photo component with the supplied options. A fallback `img` Element will be created with `imageUrl` if the Client cannot create a `canvas`.\r\n\r\nTo get the natural `width` & `height` of the image, pass an empty `Object` for `options`.\r\n\r\n### How can I load jenfr?\r\njenfr supports AMD loaders (require.js, curl.js, etc.), node.js & npm (npm install jenfr), or using a script tag.\r\n\r\n### License\r\nCopyright (c) 2016 Jason Mulligan\r\nLicensed under the BSD-3 license\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
