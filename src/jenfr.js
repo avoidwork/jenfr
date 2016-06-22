@@ -22,11 +22,8 @@ function jenfr (target, uri = "", options = {height: 100, width: 100, scale: tru
 		defer.reject(new TypeError("`options` must be an Object"));
 	}
 
-	if (!invalid) {
-		if (uri) {
-			img = document.createElement("img");
-			img.setAttribute("src", uri);
-
+	function next () {
+		if (img) {
 			if (options.scale && options.height && options.width && (img.height > options.height || img.width > options.width)) {
 				ratio.height = options.height / img.height;
 				ratio.width = options.width / img.width;
@@ -48,24 +45,27 @@ function jenfr (target, uri = "", options = {height: 100, width: 100, scale: tru
 		frag = document.createDocumentFragment();
 		canvas = document.createElement("canvas");
 		frag.appendChild(canvas);
-
-		Object.keys(options).forEach(i => {
-			if (attribute.test(i)) {
-				canvas.setAttribute(i, options[i]);
-			}
-		});
+		canvas.setAttribute("height", options.height);
+		canvas.setAttribute("width", options.width);
 
 		if (canvas.getContext) {
 			ctx = canvas.getContext("2d");
 
-			if (options.fillStyle) {
-				ctx.fillStyle = options.fillStyle;
-				ctx.fillRect(0, 0, canvas.width, canvas.height);
-			}
-
 			if (img) {
 				ctx.drawImage(img, offset.left, offset.top, img.width, img.height);
 			}
+
+			[canvas, ctx].forEach(obj => {
+				Object.keys(options).forEach(i => {
+					if (!preset.test(i)) {
+						if (typeof obj[i] === "function") {
+							obj[i](...options[i]);
+						} else if (obj.hasAttribute(i)) {
+							obj.setAttribute(i, options[i]);
+						}
+					}
+				});
+			});
 		} else if (img) {
 			canvas.appendChild(img);
 		}
@@ -74,6 +74,16 @@ function jenfr (target, uri = "", options = {height: 100, width: 100, scale: tru
 			target.appendChild(frag);
 			defer.resolve([canvas, ctx, img]);
 		});
+	}
+
+	if (!invalid) {
+		if (uri) {
+			img = document.createElement("img");
+			img.onload = next;
+			img.setAttribute("src", uri);
+		} else {
+			next();
+		}
 	}
 
 	return defer.promise;
