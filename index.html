@@ -63,9 +63,9 @@
   filter<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>blur(5px)<span class="pl-pds">"</span></span>,
   font<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>48px serif<span class="pl-pds">"</span></span>,
   strokeText<span class="pl-k">:</span> [<span class="pl-s"><span class="pl-pds">"</span>Hello world<span class="pl-pds">"</span></span>, <span class="pl-c1">50</span>, <span class="pl-c1">100</span>]
-}).<span class="pl-en">then</span>(<span class="pl-k">function</span> (<span class="pl-smi">arg</span>) {
-  <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">"</span>rendered canvas<span class="pl-pds">"</span></span>);
-}, <span class="pl-k">function</span> (<span class="pl-smi">e</span>) {
+}).<span class="pl-en">then</span>(<span class="pl-smi">args</span> <span class="pl-k">=&gt;</span> {
+  <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">"</span>rendered canvas<span class="pl-pds">"</span></span>, args);
+}, <span class="pl-smi">e</span> <span class="pl-k">=&gt;</span> {
   <span class="pl-en">console</span>.<span class="pl-c1">error</span>(e)
 });</pre></div>
 
