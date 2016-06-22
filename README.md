@@ -24,11 +24,28 @@ Promise.all(pics.map(file => {
 **jenfr(Element[, imageUrl, options])**
 _Promise ([canvas, context, image])_
 
-Creates a photo component with the supplied options. A fallback `img` Element will be created with `imageUrl` if the Client cannot create a `canvas`.
+Creates a canvas with the supplied options. A fallback `img` Element will be created with `imageUrl` if the Client cannot create a `canvas`.
 
 To get the natural `width` & `height` of the image, do not specify in `options`, e.g. `{}`.
 
+```javascript
+jenfr(document.querySelector("body"), "http://...", {
+  height: 400,
+  width: 400,
+  scale: true,
+  filter: "blur(5px)",
+  font: "48px serif",
+  strokeText: ["Hello world", 50, 100]
+}).then(function (arg) {
+  console.log("rendered canvas");debugger;
+}, function (e) {
+  console.error(e)
+});
+```
+
 #### Options
+
+`Canvas` attributes can be specified, as well as `context` methods with an `Array` of arguments.
 
 **scale _(Boolean)_**
 Scales the image to fit inside the canvas if a `width` & `height` are specified.
