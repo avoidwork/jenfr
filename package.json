@@ -1,6 +1,6 @@
 {
   "name": "jenfr",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Canvas based image loader",
   "main": "lib/jenfr.js",
   "scripts": {
