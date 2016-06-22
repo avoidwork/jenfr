@@ -12,9 +12,9 @@ const jenfr = require("jenfr"),
   target = document.querySelector("#photos");
 
 Promise.all(pics.map(file => {
-    return jenfr(target, {className: "photo"});
+    return jenfr(target, file, {className: "photo"});
 })).then(() => {
-  console.log("Photos loaded");
+  console.log("Pictures loaded");
 }, e => {
   console.error(e);
 });
@@ -26,7 +26,7 @@ _Promise ([canvas, context, image])_
 
 Creates a photo component with the supplied options. A fallback `img` Element will be created with `imageUrl` if the Client cannot create a `canvas`.
 
-To get the natural `width` & `height` of the image, pass an empty `Object` for `options`.
+To get the natural `width` & `height` of the image, do not specify in `options`, e.g. `{}`.
 
 ### How can I load jenfr?
 jenfr supports AMD loaders (require.js, curl.js, etc.), node.js & npm (npm install jenfr), or using a script tag.
