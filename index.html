@@ -39,9 +39,9 @@
   target <span class="pl-k">=</span> <span class="pl-c1">document</span>.<span class="pl-en">querySelector</span>(<span class="pl-s"><span class="pl-pds">"</span>#photos<span class="pl-pds">"</span></span>);
 
 <span class="pl-smi">Promise</span>.<span class="pl-c1">all</span>(<span class="pl-smi">pics</span>.<span class="pl-en">map</span>(<span class="pl-smi">file</span> <span class="pl-k">=&gt;</span> {
-    <span class="pl-k">return</span> <span class="pl-en">jenfr</span>(target, {className<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>photo<span class="pl-pds">"</span></span>});
+    <span class="pl-k">return</span> <span class="pl-en">jenfr</span>(target, file, {className<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>photo<span class="pl-pds">"</span></span>});
 })).<span class="pl-en">then</span>(() <span class="pl-k">=&gt;</span> {
-  <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">"</span>Photos loaded<span class="pl-pds">"</span></span>);
+  <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">"</span>Pictures loaded<span class="pl-pds">"</span></span>);
 }, <span class="pl-smi">e</span> <span class="pl-k">=&gt;</span> {
   <span class="pl-en">console</span>.<span class="pl-c1">error</span>(e);
 });</pre></div>
@@ -52,9 +52,32 @@
 <p><strong>jenfr(Element[, imageUrl, options])</strong>
 <em>Promise ([canvas, context, image])</em></p>
 
-<p>Creates a photo component with the supplied options. A fallback <code>img</code> Element will be created with <code>imageUrl</code> if the Client cannot create a <code>canvas</code>.</p>
+<p>Creates a canvas with the supplied options. A fallback <code>img</code> Element will be created with <code>imageUrl</code> if the Client cannot create a <code>canvas</code>.</p>
 
-<p>To get the natural <code>width</code> &amp; <code>height</code> of the image, pass an empty <code>Object</code> for <code>options</code>.</p>
+<p>To get the natural <code>width</code> &amp; <code>height</code> of the image, do not specify in <code>options</code>, e.g. <code>{}</code>.</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-en">jenfr</span>(<span class="pl-c1">document</span>.<span class="pl-en">querySelector</span>(<span class="pl-s"><span class="pl-pds">"</span>body<span class="pl-pds">"</span></span>), <span class="pl-s"><span class="pl-pds">"</span>http://...<span class="pl-pds">"</span></span>, {
+  height<span class="pl-k">:</span> <span class="pl-c1">400</span>,
+  width<span class="pl-k">:</span> <span class="pl-c1">400</span>,
+  scale<span class="pl-k">:</span> <span class="pl-c1">true</span>,
+  filter<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>blur(5px)<span class="pl-pds">"</span></span>,
+  font<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>48px serif<span class="pl-pds">"</span></span>,
+  strokeText<span class="pl-k">:</span> [<span class="pl-s"><span class="pl-pds">"</span>Hello world<span class="pl-pds">"</span></span>, <span class="pl-c1">50</span>, <span class="pl-c1">100</span>]
+}).<span class="pl-en">then</span>(<span class="pl-k">function</span> (<span class="pl-smi">arg</span>) {
+  <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">"</span>rendered canvas<span class="pl-pds">"</span></span>);
+}, <span class="pl-k">function</span> (<span class="pl-smi">e</span>) {
+  <span class="pl-en">console</span>.<span class="pl-c1">error</span>(e)
+});</pre></div>
+
+<h4>
+<a id="options" class="anchor" href="#options" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Options</h4>
+
+<p><code>Canvas</code> attributes can be specified, as well as <code>context</code> methods with an <code>Array</code> of arguments.</p>
+
+<p><strong>scale <em>(Boolean)</em></strong>
+Scales the image to fit inside the canvas if a <code>width</code> &amp; <code>height</code> are specified.</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-en">jenfr</span>(<span class="pl-c1">document</span>.<span class="pl-en">querySelector</span>(<span class="pl-s"><span class="pl-pds">"</span>#photo<span class="pl-pds">"</span></span>), <span class="pl-s"><span class="pl-pds">"</span>http://...<span class="pl-pds">"</span></span>, {height<span class="pl-k">:</span> <span class="pl-c1">500</span>, width<span class="pl-k">:</span> <span class="pl-c1">500</span>, scale<span class="pl-k">:</span> <span class="pl-c1">true</span>});</pre></div>
 
 <h3>
 <a id="how-can-i-load-jenfr" class="anchor" href="#how-can-i-load-jenfr" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How can I load jenfr?</h3>
