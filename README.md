@@ -36,9 +36,9 @@ jenfr(document.querySelector("body"), "http://...", {
   filter: "blur(5px)",
   font: "48px serif",
   strokeText: ["Hello world", 50, 100]
-}).then(function (arg) {
-  console.log("rendered canvas");
-}, function (e) {
+}).then(args => {
+  console.log("rendered canvas", args);
+}, e => {
   console.error(e)
 });
 ```

@@ -80,6 +80,7 @@ function jenfr (target, uri = "", options = {height: 100, width: 100, scale: tru
 		if (uri) {
 			img = document.createElement("img");
 			img.onload = next;
+			img.onerror = e => defer.reject(e);
 			img.setAttribute("src", uri);
 		} else {
 			next();
