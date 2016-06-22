@@ -1,4 +1,4 @@
 "use strict";
 
 (function (global) {
-const preset = /^(drawImage|height|width)$/;
+const preset = /^(drawImage|height|scale|width)$/;

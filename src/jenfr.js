@@ -55,13 +55,13 @@ function jenfr (target, uri = "", options = {height: 100, width: 100, scale: tru
 				ctx.drawImage(img, offset.left, offset.top, img.width, img.height);
 			}
 
-			[canvas, ctx].forEach(obj => {
+			[canvas, ctx].forEach((obj, odx) => {
 				Object.keys(options).forEach(i => {
 					if (!preset.test(i)) {
-						if (typeof obj[i] === "function") {
-							obj[i](...options[i]);
-						} else if (obj.hasAttribute(i)) {
+						if (odx === 0 && obj.hasAttribute(i)) {
 							obj.setAttribute(i, options[i]);
+						} else if (typeof obj[i] === "function") {
+							obj[i](...options[i]);
 						}
 					}
 				});
